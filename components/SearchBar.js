@@ -4,7 +4,7 @@ import React from "react";
 // npm i @expo/vector-icons
 import { AntDesign } from "@expo/vector-icons";
 
-export default function SearchBar() {
+export default function SearchBar({ term, onTermChange, onTermSubmit }) {
   return (
     <View style={styles.backgroundStyle}>
       <AntDesign
@@ -18,6 +18,13 @@ export default function SearchBar() {
         placeholder="Ara"
         autoCorrect={false}
         autoCapitalize="none"
+        // parent'ten gelen props
+        value={term}
+        // child'den parent'a callback olarak props gönderme
+        // içeri yazı yazdığımızda tetiklenir
+        onChangeText={onTermChange}
+        // yazmam bittiğinde tetiklenir
+        onEndEditing={onTermSubmit}
       />
     </View>
   );
