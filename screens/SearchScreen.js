@@ -4,11 +4,10 @@ import React from "react";
 import SearchBar from "../components/SearchBar";
 import useResults from "../hooks/useResults";
 import ResultsList from "../components/ResultsList";
-useResults;
 
 export default function SearchScreen() {
   const [searchApi, results] = useResults();
-  console.log(results);
+  // console.log(results);
 
   const filterResultsByPrice = (price) => {
     return results.filter((result) => {

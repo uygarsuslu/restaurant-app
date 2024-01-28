@@ -8,9 +8,11 @@ import {
 } from "react-native";
 import React from "react";
 import ResultDetail from "./ResultDetail";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ResultsList({ title, results }) {
-  console.log(results);
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
@@ -20,7 +22,12 @@ export default function ResultsList({ title, results }) {
         data={results}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                // id'yi alıp yelp.api'ye istek atıp gelen bilgilere göre bastırma işlemini yapacağız.
+                navigation.navigate("ResultsShow", { id: item.id });
+              }}
+            >
               <ResultDetail result={item} />
             </TouchableOpacity>
           );
